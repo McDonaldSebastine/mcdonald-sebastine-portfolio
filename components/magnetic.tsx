@@ -12,16 +12,14 @@ interface MagneticProps {
 export function Magnetic({ children, strength = 0.35, className }: MagneticProps) {
   const ref = React.useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  const [isTouch, setIsTouch] = React.useState(true);
+  const [isTouch] = React.useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(pointer: coarse)").matches : true
+  );
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 200, damping: 18, mass: 0.4 });
   const springY = useSpring(y, { stiffness: 200, damping: 18, mass: 0.4 });
-
-  React.useEffect(() => {
-    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
-  }, []);
 
   function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
     if (!ref.current || isTouch || shouldReduceMotion) return;

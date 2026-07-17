@@ -24,14 +24,19 @@ export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const [prevPathname, setPrevPathname] = React.useState(pathname);
   const menuRef = React.useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 8));
 
-  React.useEffect(() => {
+  // Close the mobile menu on navigation. Adjusting state during render
+  // (rather than in an effect) avoids an extra render-then-effect cycle —
+  // see https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   // Lock body scroll and handle Escape while the mobile menu is open.
   React.useEffect(() => {

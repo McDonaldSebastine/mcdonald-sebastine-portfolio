@@ -166,11 +166,39 @@ should update the `href` in `app/resume/page.tsx`.
 `components/contact-form.tsx` posts to `app/api/contact/route.ts`. Both share
 the same validation rules from `lib/validation.ts`, so client and server can
 never drift out of sync. The form shows inline, field-level errors with
-proper `aria-invalid`/`aria-describedby` wiring. By default the API route
-only logs the submission — wire it up to a real email provider (Resend,
-SendGrid, Postmark) or a CRM/webhook by filling in the commented-out section
-in that file and adding the relevant API key to `.env.local` (see
-`.env.example`).
+proper `aria-invalid`/`aria-describedby` wiring.
+
+Email delivery is wired up via [Resend](https://resend.com). To turn it on:
+
+1. **Create a Resend account** at [resend.com](https://resend.com) (free tier
+   covers a personal portfolio's volume easily).
+2. **Get an API key** from [resend.com/api-keys](https://resend.com/api-keys).
+3. **Add it as an environment variable:**
+   - Locally: copy `.env.example` to `.env.local` and set
+     `RESEND_API_KEY=re_your_key_here`
+   - On Vercel: Project Settings → Environment Variables → add
+     `RESEND_API_KEY` → redeploy
+4. **That's it for testing.** Without any further setup, emails send from
+   Resend's shared `onboarding@resend.dev` address to whatever email is set
+   in `siteConfig.email` (`lib/site.ts`) — every submission arrives with the
+   sender's email set as "reply-to", so you can just hit reply.
+
+**To send from your own address** (e.g. `you@yourdomain.com` instead of
+`onboarding@resend.dev`), verify a domain in Resend under **Domains → Add
+Domain** (add the DNS records they give you), then set
+`CONTACT_FROM_EMAIL=you@yourdomain.com` as an environment variable.
+
+**To send to a different inbox** than the one in `lib/site.ts`, set
+`CONTACT_RECIPIENT_EMAIL=someone@example.com`.
+
+If `RESEND_API_KEY` isn't set at all, the route doesn't fail — it just logs
+the submission to the server console instead of emailing it, so local
+development never throws errors over a missing key.
+
+Prefer a different provider (SendGrid, Postmark) or a CRM/webhook instead?
+Swap the `resend.emails.send(...)` call in `app/api/contact/route.ts` for
+that provider's SDK — the validation, error handling, and response shape
+around it stay the same.
 
 ## Motion system
 
