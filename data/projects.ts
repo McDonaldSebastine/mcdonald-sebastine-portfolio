@@ -122,4 +122,80 @@ export const projects: Project[] = [
     tools: ["Node.js", "docx (npm)", "ATS Formatting"],
     year: "2025",
   },
+  {
+    id: "sop-executive-calendar",
+    title: "SOP: Executive Calendar & Scheduling Management",
+    category: "Documentation & Content",
+    summary:
+      "A complete, 7-section Standard Operating Procedure governing how an executive calendar gets managed end to end — written so any assistant could pick it up and run it without guesswork.",
+    impact: [
+      "Covers daily calendar audits, incoming request intake, and conflict resolution rules",
+      "Defines meeting preparation and post-meeting follow-up as explicit, repeatable steps",
+      "Sets clear performance targets: under 5% scheduling conflicts, 95%+ same-day resolution, 100% follow-up completion",
+      "Version history (v1.0–v1.2) shows the SOP has been actively maintained since 2023, not a one-off document",
+    ],
+    tools: ["SOP Documentation", "Process Design", "Executive Support"],
+    year: "2023–2026",
+    href: "/documents/sop-executive-calendar-management.docx",
+  },
+  {
+    id: "crm-tools-research-brief",
+    title: "Research Brief: AI-Powered CRM Tools",
+    category: "Documentation & Content",
+    summary:
+      "A structured, five-minute strategic brief comparing HubSpot, Salesforce, Zoho CRM, and Pipedrive for a distributed 10–25 person remote sales team — built to move leadership from open question to decision.",
+    impact: [
+      "Compares four platforms head-to-head on AI features, pricing, and best-fit team size",
+      "Recommends HubSpot for immediate adoption, with Salesforce flagged as the scale-up path",
+      "Closes with 5 concrete next steps — trial plan, migration mapping, and a named CRM owner — not just findings",
+    ],
+    tools: ["Research", "Reporting", "HubSpot", "Salesforce", "Zoho CRM", "Pipedrive"],
+    year: "2026",
+    href: "/documents/research-brief-crm-tools.docx",
+  },
+  {
+    id: "executive-communication-templates",
+    title: "Executive Communication Templates",
+    category: "Documentation & Content",
+    summary:
+      "Five ready-to-send email templates — refined over 5+ years of executive support — covering the most common communication moments, from the first meeting request through escalation.",
+    impact: [
+      "Covers meeting requests, agenda-backed confirmations, rescheduling, follow-up, and escalation",
+      "Formatted for immediate use, not just a style guide someone still has to translate",
+      "Keeps executive correspondence consistent across an entire team, not just one person",
+    ],
+    tools: ["Executive Communications", "Documentation", "Templates"],
+    year: "2026",
+    href: "/documents/executive-communication-templates.docx",
+  },
+  {
+    id: "zapier-automation-case-study",
+    title: "Zapier Automation Case Study",
+    category: "Operations & Automation",
+    summary:
+      "A step-by-step technical walkthrough of all five automation workflows built at Grandida LLC over a 3-week, 14-hour build — each documented with its trigger, its actions, and its measured result.",
+    impact: [
+      "5 production workflows: CRM logging, follow-up sequencing, pipeline alerts, calendar-link sync, and audit reminders",
+      "100% consistent post-meeting CRM logging and zero link-related meeting disruptions after deployment",
+      "CRM data completeness rose from ~75% to 96% within 8 weeks; all 5 workflows still active 12+ months later",
+    ],
+    tools: ["Zapier", "Workflow Automation", "Technical Documentation"],
+    year: "Jun–Aug 2023",
+    href: "/documents/zapier-automation-case-study.docx",
+  },
+  {
+    id: "project-documentation-writeups",
+    title: "Project Documentation: Grandida & GloryZone",
+    category: "Documentation & Content",
+    summary:
+      "Two full project write-ups — the Grandida LLC Workflow Automation Initiative and the GloryZone Ministry Administrative Systems Overhaul — each covering the problem, the actions taken, the results, and what was learned.",
+    impact: [
+      "Grandida: self-initiated audit uncovered 6–8 lost hours/week, leading to 40% less admin workload and 25% better CRM accuracy",
+      "GloryZone: built the systems behind a 98% follow-through rate and a 35% drop in calendar conflicts for 500+ members",
+      "Each write-up includes a problem statement, actions taken, results, and key learnings — not just outcomes",
+    ],
+    tools: ["Documentation", "Process Design", "Case Study Writing"],
+    year: "2023–2026",
+    href: "/documents/project-documentation.docx",
+  },
 ];

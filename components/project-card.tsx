@@ -1,3 +1,4 @@
+import { Download } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { Project } from "@/data/projects";
@@ -27,12 +28,24 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </ul>
       </CardContent>
-      <CardFooter className="flex flex-wrap gap-2">
-        {project.tools.map((tool) => (
-          <Badge key={tool} variant="secondary">
-            {tool}
-          </Badge>
-        ))}
+      <CardFooter className="flex flex-col items-start gap-4">
+        <div className="flex flex-wrap gap-2">
+          {project.tools.map((tool) => (
+            <Badge key={tool} variant="secondary">
+              {tool}
+            </Badge>
+          ))}
+        </div>
+        {project.href && (
+          <a
+            href={project.href}
+            download
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+          >
+            Download document
+            <Download className="h-3.5 w-3.5" />
+          </a>
+        )}
       </CardFooter>
     </Card>
   );
